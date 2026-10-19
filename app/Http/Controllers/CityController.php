@@ -7,9 +7,29 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
-    public function index(){
-        $cities = City::all();
-        return response()->json(['cities' => $cities]);
+    public function index(Request $request){
+        $query = City::query();
+
+        if ($request->filled('search')) {
+            $query->where(
+                'city',
+                'LIKE',
+                '%' . $request->search . '%'
+            );
+        }
+
+        if ($request->filled('county_id')) {
+            $query->where(
+                'county_id',
+                $request->county_id
+            );
+        }
+
+        $cities = $query->get();
+
+        return response()->json([
+            'cities' => $cities
+        ]);
     }
 
     public function store(Request $request){
