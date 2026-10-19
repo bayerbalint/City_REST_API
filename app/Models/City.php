@@ -18,8 +18,15 @@ class City extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'badge',
+        'zip_code',
+        'city',
+        'population',
+        'county_id'
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
     ];
 
     public function getCities(){

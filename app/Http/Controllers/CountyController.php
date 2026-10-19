@@ -30,6 +30,7 @@ class CountyController extends Controller
         ]);
 
         $county = County::findOrFail($id);
+
         $county->update($request->all());
 
         return response()->json(['county' => $county]);

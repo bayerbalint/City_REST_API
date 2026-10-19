@@ -18,10 +18,13 @@ class County extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'zip_code',
-        'city',
-        'population',
-        'county_id'
+        'name',
+        'badge',
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
     ];
 
     public function getCounty(){
